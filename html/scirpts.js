@@ -1,23 +1,59 @@
-const box = document.getElementById("ecall")
-const time = document.getElementById("time")
+const ecall = document.getElementById("ecall");
 
-window.addEventListener("message",(event)=>{
+const vehicle = document.getElementById("vehicle");
+const plate = document.getElementById("plate");
+const time = document.getElementById("time");
 
-    switch(event.data.action){
+const status = document.querySelector(".status");
+
+window.addEventListener("message", function(event){
+
+    const data = event.data;
+
+    switch(data.action){
 
         case "show":
-            box.style.display="block"
-            time.innerHTML=event.data.seconds
-        break
+
+            vehicle.innerHTML = data.vehicle || "Unbekannt";
+            plate.innerHTML = data.plate || "-----";
+            time.innerHTML = data.seconds;
+
+            status.innerHTML = "Automatischer Notruf wird vorbereitet...";
+
+            ecall.classList.remove("hidden");
+
+        break;
 
         case "update":
-            time.innerHTML=event.data.seconds
-        break
+
+            time.innerHTML = data.seconds;
+
+        break;
+
+        case "sent":
+
+            status.innerHTML = "✓ Notruf erfolgreich gesendet.";
+
+        break;
+
+        case "cancel":
+
+            status.innerHTML = "✕ Notruf wurde abgebrochen.";
+
+            setTimeout(() => {
+
+                ecall.classList.add("hidden");
+
+            },1500);
+
+        break;
 
         case "hide":
-            box.style.display="none"
-        break
+
+            ecall.classList.add("hidden");
+
+        break;
 
     }
 
-})
+});
