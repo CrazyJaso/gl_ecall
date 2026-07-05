@@ -33,4 +33,7 @@ files {
     'html/index.html',
     'html/style.css',
     'html/script.js'
+
+    'html/sounds/warning.ogg',
+    'html/sounds/success.ogg'
 }
