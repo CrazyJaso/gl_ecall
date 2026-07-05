@@ -1,69 +1,205 @@
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
     overflow:hidden;
-    font-family:Arial;
+    background:transparent;
 }
 
 .hidden{
-    display:none;
+    display:none !important;
 }
 
 #ecall{
 
     position:absolute;
 
-    top:7%;
+    top:60px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    width:360px;
+    width:460px;
 
-    background:#202020;
+    border-radius:18px;
 
-    border-radius:12px;
+    background:rgba(24,24,24,.88);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.08);
 
     color:white;
 
-    text-align:center;
+    overflow:hidden;
 
-    padding:15px;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
 
-    box-shadow:0 0 20px rgba(0,0,0,.6);
-
-}
-
-.title{
-
-    font-size:24px;
-    font-weight:bold;
-    color:#ff9900;
+    animation:slideDown .35s ease;
 
 }
 
-.text{
+.header{
 
-    margin-top:10px;
+    display:flex;
 
-    font-size:18px;
+    align-items:center;
+
+    padding:20px;
+
+    background:linear-gradient(90deg,#ff8c00,#ffb300);
+
+    color:white;
+
+}
+
+.headerIcon{
+
+    font-size:34px;
+
+    margin-right:15px;
+
+}
+
+.headerText h1{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.headerText span{
+
+    font-size:14px;
+
+    opacity:.95;
+
+}
+
+.content{
+
+    padding:22px;
+
+}
+
+.vehicleInfo{
+
+    margin-bottom:20px;
+
+}
+
+.row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+}
+
+.row span{
+
+    color:#bdbdbd;
+
+}
+
+.row strong{
+
+    color:#fff;
+
+    font-weight:600;
 
 }
 
 .countdown{
 
-    margin-top:15px;
+    display:flex;
 
-    font-size:22px;
+    justify-content:center;
 
-    color:#ffcc00;
+    margin:25px 0;
+
+}
+
+.circle{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    border:6px solid #ff9800;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.footer{
+
+    text-align:center;
+
+}
+
+.status{
+
+    font-size:15px;
+
+    margin-bottom:10px;
+
+    color:#e0e0e0;
 
 }
 
 .cancel{
 
-    margin-top:10px;
+    font-size:14px;
 
-    color:#bbbbbb;
+    color:#bdbdbd;
+
+}
+
+.cancel b{
+
+    color:#ff9800;
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translate(-50%,-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translate(-50%,0);
+
+    }
 
 }
