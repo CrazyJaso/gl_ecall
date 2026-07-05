@@ -1,22 +1,22 @@
-window.addEventListener("message", function(event){
+const box = document.getElementById("ecall")
+const time = document.getElementById("time")
 
-    if(event.data.action == "show"){
+window.addEventListener("message",(event)=>{
 
-        document.getElementById("ecall").classList.remove("hidden")
+    switch(event.data.action){
 
-        document.getElementById("time").innerHTML = event.data.seconds
+        case "show":
+            box.style.display="block"
+            time.innerHTML=event.data.seconds
+        break
 
-    }
+        case "update":
+            time.innerHTML=event.data.seconds
+        break
 
-    if(event.data.action == "update"){
-
-        document.getElementById("time").innerHTML = event.data.seconds
-
-    }
-
-    if(event.data.action == "hide"){
-
-        document.getElementById("ecall").classList.add("hidden")
+        case "hide":
+            box.style.display="none"
+        break
 
     }
 
