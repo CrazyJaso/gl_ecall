@@ -1,62 +1,81 @@
-local countdownActive = false
+local active = false
 
-RegisterNetEvent('gl_ecall:countdown', function(data)
+local function ShowECall(seconds)
+    SetNuiFocus(false, false)
 
-    if countdownActive then return end
+    SendNUIMessage({
+        action = "show",
+        seconds = seconds
+    })
+end
 
-    countdownActive = true
+local function UpdateECall(seconds)
+    SendNUIMessage({
+        action = "update",
+        seconds = seconds
+    })
+end
+
+local function HideECall()
+    SendNUIMessage({
+        action = "hide"
+    })
+end
+
+RegisterNetEvent("gl_ecall:countdown", function(data)
+
+    if active then return end
+
+    active = true
 
     local seconds = Config.Countdown
 
-    while seconds > 0 do
+    ShowECall(seconds)
 
-        lib.notify({
-            title = 'Automatischer eCall',
-            description = ('Ein Notruf wird in %s Sekunden abgesetzt.\n\nDrücke [G] zum Abbrechen.'):format(seconds),
-            type = 'warning',
-            duration = 1000
-        })
+    while seconds > 0 do
 
         Wait(1000)
 
+        seconds -= 1
+
+        UpdateECall(seconds)
+
         if IsControlJustReleased(0, Config.CancelKey) then
 
+            HideECall()
+
             lib.notify({
-                title = 'eCall',
-                description = 'Automatischer Notruf wurde abgebrochen.',
-                type = 'error'
+                title = "eCall",
+                description = "Notruf wurde abgebrochen.",
+                type = "error"
             })
 
-            countdownActive = false
-            TriggerEvent('gl_ecall:reset')
+            active = false
+            TriggerEvent("gl_ecall:reset")
             return
         end
-
-        seconds = seconds - 1
     end
 
+    HideECall()
+
     local ped = PlayerPedId()
-    local vehicle = GetVehiclePedIsIn(ped, false)
+    local veh = GetVehiclePedIsIn(ped,false)
 
-    local coords = GetEntityCoords(ped)
-    local heading = GetEntityHeading(vehicle)
-    local plate = GetVehicleNumberPlateText(vehicle)
-    local model = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
-
-    TriggerServerEvent('gl_ecall:send', {
-        coords = coords,
-        heading = heading,
-        plate = plate,
-        model = model
+    TriggerServerEvent("gl_ecall:send",{
+        coords = GetEntityCoords(ped),
+        heading = GetEntityHeading(veh),
+        plate = GetVehicleNumberPlateText(veh),
+        model = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
     })
 
     lib.notify({
-        title = 'eCall',
-        description = 'Der automatische Notruf wurde gesendet.',
-        type = 'success'
+        title="eCall",
+        description="Automatischer Notruf wurde gesendet.",
+        type="success"
     })
 
-    countdownActive = false
-    TriggerEvent('gl_ecall:reset')
+    active = false
+
+    TriggerEvent("gl_ecall:reset")
 
 end)
