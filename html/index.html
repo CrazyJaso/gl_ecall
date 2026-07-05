@@ -1,27 +1,98 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>gl_ecall</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 
 <div id="ecall" class="hidden">
-    <div class="title">
-        🚑 Automatischer eCall
+
+    <div class="header">
+
+        <div class="headerIcon">
+            🚑
+        </div>
+
+        <div class="headerText">
+
+            <h1>Automatischer eCall</h1>
+
+            <span>Schwerer Verkehrsunfall erkannt</span>
+
+        </div>
+
     </div>
 
-    <div class="text">
-        Schwerer Verkehrsunfall erkannt
+    <div class="content">
+
+        <div class="vehicleInfo">
+
+            <div class="row">
+
+                <span>Fahrzeug</span>
+
+                <strong id="vehicle">
+                    Unbekannt
+                </strong>
+
+            </div>
+
+            <div class="row">
+
+                <span>Kennzeichen</span>
+
+                <strong id="plate">
+                    ----
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="countdown">
+
+            <div class="circle">
+
+                <span id="time">
+                    10
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+
+            <div class="status">
+
+                Automatischer Notruf wird vorbereitet...
+
+            </div>
+
+            <div class="cancel">
+
+                Drücke <b>G</b>, um den Notruf abzubrechen
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="countdown">
-        Notruf in <span id="time">10</span> Sekunden
-    </div>
-
-    <div class="cancel">
-        Drücke <b>G</b> zum Abbrechen
-    </div>
 </div>
 
 <script src="script.js"></script>
