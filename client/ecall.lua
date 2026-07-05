@@ -59,7 +59,7 @@ RegisterNetEvent("gl_ecall:countdown", function()
 
     local plate = GetVehicleNumberPlateText(veh)
 
-    if plate == nil or plate == "" then
+    if not plate or plate == "" then
         plate = "Unbekannt"
     end
 
@@ -69,21 +69,27 @@ RegisterNetEvent("gl_ecall:countdown", function()
 
     while seconds > 0 do
 
-        Wait(1000)
+        local startTime = GetGameTimer()
 
-        if IsControlJustReleased(0, Config.CancelKey) then
+        while GetGameTimer() - startTime < 1000 do
 
-            CancelECall()
+            Wait(0)
 
-            Wait(1500)
+            if IsControlJustReleased(0, Config.CancelKey) then
 
-            HideECall()
+                CancelECall()
 
-            active = false
+                Wait(1500)
 
-            TriggerEvent("gl_ecall:reset")
+                HideECall()
 
-            return
+                active = false
+
+                TriggerEvent("gl_ecall:reset")
+
+                return
+
+            end
 
         end
 
