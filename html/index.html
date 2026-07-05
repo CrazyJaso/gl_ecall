@@ -2,7 +2,6 @@
 <html lang="de">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,107 +9,83 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
 
-<div id="ecall" class="hidden">
+    <div id="ecall" class="hidden">
 
-    <div class="header">
+        <div class="header">
 
-        <div class="headerIcon">
-            🚑
-        </div>
-
-        <div class="headerText">
-
-            <h1>Automatischer eCall</h1>
-
-            <span>Schwerer Verkehrsunfall erkannt</span>
-
-        </div>
-
-    </div>
-
-    <div class="content">
-
-        <div class="vehicleInfo">
-
-            <div class="row">
-
-                <span>Fahrzeug</span>
-
-                <strong id="vehicle">
-                    Unbekannt
-                </strong>
-
+            <div class="icon">
+                🚑
             </div>
 
-            <div class="row">
-
-                <span>Kennzeichen</span>
-
-                <strong id="plate">
-                    ----
-                </strong>
-
+            <div class="titles">
+                <h1>Automatischer eCall</h1>
+                <p>Schwerer Verkehrsunfall erkannt</p>
             </div>
 
         </div>
 
-       <div class="countdown">
+        <div class="content">
 
-    <svg class="progress" width="150" height="150">
+            <div class="vehicleBox">
 
-        <circle
-            class="bg"
-            cx="75"
-            cy="75"
-            r="62">
-        </circle>
+                <div class="row">
+                    <span>Fahrzeug</span>
+                    <strong id="vehicle">Unbekannt</strong>
+                </div>
 
-        <circle
-            id="progressCircle"
-            class="progressCircle"
-            cx="75"
-            cy="75"
-            r="62">
-        </circle>
+                <div class="row">
+                    <span>Kennzeichen</span>
+                    <strong id="plate">-----</strong>
+                </div>
 
-    </svg>
+            </div>
 
-    <div class="timeText" id="time">
-        10
-    </div>
+            <div class="progressWrapper">
 
-</div>
+                <svg width="170" height="170">
 
-        <div class="footer">
+                    <circle
+                        class="backgroundCircle"
+                        cx="85"
+                        cy="85"
+                        r="70">
+                    </circle>
 
-            <div class="status">
+                    <circle
+                        id="progressCircle"
+                        class="progressCircle"
+                        cx="85"
+                        cy="85"
+                        r="70">
+                    </circle>
 
+                </svg>
+
+                <div class="countNumber">
+                    <span id="time">10</span>
+                </div>
+
+            </div>
+
+            <div class="status" id="status">
                 Automatischer Notruf wird vorbereitet...
-
             </div>
 
             <div class="cancel">
-
                 Drücke <b>G</b>, um den Notruf abzubrechen
-
             </div>
 
         </div>
 
     </div>
 
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
