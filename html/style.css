@@ -134,27 +134,49 @@ body{
 
 }
 
-.circle{
+.progress{
 
-    width:120px;
+    transform:rotate(-90deg);
 
-    height:120px;
+}
 
-    border-radius:50%;
+.bg{
 
-    border:6px solid #ff9800;
+    fill:none;
 
-    display:flex;
+    stroke:#333;
 
-    justify-content:center;
+    stroke-width:10;
 
-    align-items:center;
+}
 
-    font-size:42px;
+.progressCircle{
+
+    fill:none;
+
+    stroke:#ff9800;
+
+    stroke-width:10;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:390;
+
+    stroke-dashoffset:0;
+
+    transition:stroke-dashoffset 1s linear;
+
+}
+
+.timeText{
+
+    position:absolute;
+
+    font-size:40px;
 
     font-weight:700;
 
-    color:#fff;
+    color:white;
 
 }
 
