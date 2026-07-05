@@ -3,6 +3,11 @@ const ecall = document.getElementById("ecall");
 const vehicle = document.getElementById("vehicle");
 const plate = document.getElementById("plate");
 const time = document.getElementById("time");
+const warningSound = new Audio("sounds/warning.ogg");
+const successSound = new Audio("sounds/success.ogg");
+
+warningSound.volume = 0.55;
+successSound.volume = 0.45;
 
 const status = document.querySelector(".status");
 
