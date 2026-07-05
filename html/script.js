@@ -56,7 +56,7 @@ window.addEventListener("message", function(event){
 
         case "sent":
 
-            status.innerHTML = "✔ Notruf erfolgreich gesendet.";
+            status.innerHTML = "âœ” Notruf erfolgreich gesendet.";
 
             setTimeout(function(){
 
@@ -68,7 +68,7 @@ window.addEventListener("message", function(event){
 
         case "cancel":
 
-            status.innerHTML = "✖ Automatischer Notruf wurde abgebrochen.";
+            status.innerHTML = "âœ– Automatischer Notruf wurde abgebrochen.";
 
             setTimeout(function(){
 
