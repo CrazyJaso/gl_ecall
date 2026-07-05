@@ -25,8 +25,9 @@ server_scripts {
 dependencies {
     'ox_lib',
     'emergencydispatch'
+}
 
-    ui_page 'html/index.html'
+ui_page 'html/index.html'
 
 files {
     'html/index.html',
