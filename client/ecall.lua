@@ -39,19 +39,29 @@ end
 RegisterNetEvent("gl_ecall:countdown", function()
 
     if active then return end
-
     active = true
 
     local ped = PlayerPedId()
+
+    if not IsPedInAnyVehicle(ped, false) then
+        active = false
+        return
+    end
+
     local veh = GetVehiclePedIsIn(ped, false)
 
-    local model = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(veh)))
+    local display = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
+    local model = GetLabelText(display)
 
-    if model == "NULL" then
-        model = GetDisplayNameFromVehicleModel(GetEntityModel(veh))
+    if model == "NULL" or model == display then
+        model = display
     end
 
     local plate = GetVehicleNumberPlateText(veh)
+
+    if plate == nil or plate == "" then
+        plate = "Unbekannt"
+    end
 
     local seconds = Config.Countdown
 
